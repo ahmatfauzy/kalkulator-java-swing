@@ -4,6 +4,7 @@
  */
 package kalkulator;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,13 +12,15 @@ import javax.swing.JOptionPane;
  * @author FAUZI
  */
 public class JFKalkulator extends javax.swing.JFrame {
+    
+     private ArrayList<Double> historyList = new ArrayList<>();
 
     /**
      * Creates new form JFKalkulator
      */
     public JFKalkulator() {
         initComponents();
-
+        
 //        setVisible(true);
     }
 
@@ -43,6 +46,8 @@ public class JFKalkulator extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblKesalahan = new javax.swing.JLabel();
+        txtHistori = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +98,10 @@ public class JFKalkulator extends javax.swing.JFrame {
         lblKesalahan.setForeground(new java.awt.Color(255, 51, 51));
         lblKesalahan.setText(" ");
 
+        txtHistori.setText("jLabel4");
+
+        jLabel4.setText("Histori:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,25 +109,28 @@ public class JFKalkulator extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnKurang, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnKali, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnBagi, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2)
-                            .addComponent(txtAngka1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblHasil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtAngka2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblKesalahan, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(204, 204, 204)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnKurang, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnKali, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnBagi, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel2)
+                                .addComponent(txtAngka1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblHasil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtAngka2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblKesalahan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtHistori, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -144,7 +156,11 @@ public class JFKalkulator extends javax.swing.JFrame {
                 .addComponent(lblKesalahan)
                 .addGap(18, 18, 18)
                 .addComponent(lblHasil, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtHistori)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
@@ -162,6 +178,7 @@ public class JFKalkulator extends javax.swing.JFrame {
 //            double num2 = Double.parseDouble(txtAngka2.getText());
             double hasil = angka[0] - angka[1]; // percepat
             lblHasil.setText("Hasil: " + hasil);
+             simpanHistory(hasil);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Masukkan angka yang valid!");
         }
@@ -265,10 +282,12 @@ public class JFKalkulator extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblHasil;
     private javax.swing.JLabel lblKesalahan;
     private app.bolivia.swing.JCTextField txtAngka1;
     private app.bolivia.swing.JCTextField txtAngka2;
+    private javax.swing.JLabel txtHistori;
     // End of variables declaration//GEN-END:variables
 
     private boolean Template() {
@@ -286,6 +305,19 @@ public class JFKalkulator extends javax.swing.JFrame {
         double num1 = Double.parseDouble(txtAngka1.getText());
         double num2 = Double.parseDouble(txtAngka2.getText());
         return new double[]{num1, num2};
+    }
+
+    private void simpanHistory(double hasil) {
+        if (historyList.size() == 5) {
+            historyList.remove(0); 
+        }
+        historyList.add(hasil);
+
+        StringBuilder historyText = new StringBuilder();
+        for (double h : historyList) {
+            historyText.append(h).append(", ");
+        }
+        txtHistori.setText(historyText.toString());
     }
 
 }
