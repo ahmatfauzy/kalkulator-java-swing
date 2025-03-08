@@ -46,10 +46,12 @@ public class JFKalkulator extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblKesalahan = new javax.swing.JLabel();
-        txtHistori = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtHistori = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
         txtAngka1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,9 +100,14 @@ public class JFKalkulator extends javax.swing.JFrame {
         lblKesalahan.setForeground(new java.awt.Color(255, 51, 51));
         lblKesalahan.setText(" ");
 
-        txtHistori.setText("jLabel4");
-
         jLabel4.setText("Histori:");
+
+        txtHistori.setEditable(false);
+        txtHistori.setBackground(new java.awt.Color(242, 242, 242));
+        txtHistori.setColumns(20);
+        txtHistori.setLineWrap(true);
+        txtHistori.setRows(5);
+        jScrollPane1.setViewportView(txtHistori);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,7 +137,7 @@ public class JFKalkulator extends javax.swing.JFrame {
                                 .addComponent(lblHasil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtAngka2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lblKesalahan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtHistori, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(jScrollPane1)))))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -159,8 +166,8 @@ public class JFKalkulator extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtHistori)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -286,11 +293,12 @@ public class JFKalkulator extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblHasil;
     private javax.swing.JLabel lblKesalahan;
     private app.bolivia.swing.JCTextField txtAngka1;
     private app.bolivia.swing.JCTextField txtAngka2;
-    private javax.swing.JLabel txtHistori;
+    private javax.swing.JTextArea txtHistori;
     // End of variables declaration//GEN-END:variables
 
     private boolean Template() {
@@ -318,7 +326,7 @@ public class JFKalkulator extends javax.swing.JFrame {
 
         StringBuilder historyText = new StringBuilder();
         for (double h : historyList) {
-            historyText.append(h).append(", ");
+            historyText.append(h).append("\n");
         }
         txtHistori.setText(historyText.toString());
     }
