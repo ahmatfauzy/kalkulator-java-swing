@@ -178,7 +178,7 @@ public class JFKalkulator extends javax.swing.JFrame {
 //            double num2 = Double.parseDouble(txtAngka2.getText());
             double hasil = angka[0] - angka[1]; // percepat
             lblHasil.setText("Hasil: " + hasil);
-             simpanHistory(hasil);
+            simpanHistory(hasil);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Masukkan angka yang valid!");
         }
@@ -193,6 +193,7 @@ public class JFKalkulator extends javax.swing.JFrame {
             double[] angka = InisiasiForm();
             double hasil = angka[0] + angka[1];
             lblHasil.setText("Hasil: " + hasil);
+            simpanHistory(hasil);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Masukkan angka yang valid!");
         }
@@ -208,6 +209,7 @@ public class JFKalkulator extends javax.swing.JFrame {
             double[] angka = InisiasiForm();
             double hasil = angka[0] * angka[1];
             lblHasil.setText("Hasil: " + hasil);
+            simpanHistory(hasil);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Masukkan angka yang valid!");
         }
@@ -221,12 +223,13 @@ public class JFKalkulator extends javax.swing.JFrame {
         try {
             double[] angka = InisiasiForm();
             if (angka[1] == 0) {
-                lblKesalahan.setText("Terjadi Kesalahan, tidak bisa dibagi dengan angka nol!!!!!!");
+                lblKesalahan.setText("Terjadi Kesalahan, tidak bisa dibagi dengan angka nol !!!");
                 return;
             }
 
             double hasil = angka[0] / angka[1];
             lblHasil.setText("Hasil: " + hasil);
+            simpanHistory(hasil);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Masukkan angka yang valid!");
         }
@@ -308,7 +311,7 @@ public class JFKalkulator extends javax.swing.JFrame {
     }
 
     private void simpanHistory(double hasil) {
-        if (historyList.size() == 5) {
+        if (historyList.size() == MAX_HISTORY) {
             historyList.remove(0); 
         }
         historyList.add(hasil);
@@ -319,5 +322,7 @@ public class JFKalkulator extends javax.swing.JFrame {
         }
         txtHistori.setText(historyText.toString());
     }
+    
+    private static final int MAX_HISTORY = 5;
 
 }
